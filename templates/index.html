@@ -27,6 +27,15 @@
                             </tr>
                             {% endfor %}
 
+                            {% for group in groups %}
+                            <tr>
+                                <td><img src="{% static 'assets/3.jpg' %}" alt="" class="profile-image rounded-circle">
+                                </td>
+                                <td><a href="{% url 'texting:group' group.id %}">{{group.group_name}}</a></td>
+                            </tr>
+                            {% endfor %}
+                            <a href="{% url 'texting:creategroup'%}">create group</a>
+
                             <!-- end -->
                         </tbody>
                     </table>

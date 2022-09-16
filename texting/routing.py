@@ -1,5 +1,6 @@
-from texting.consumers import PersonalChatConsumer
+from texting.consumers import PersonalChatConsumer, GroupChatConsumer
 from django.urls import path
 
 websocket_urlpatterns = [
-    path('ws/<int:id>/', PersonalChatConsumer.as_asgi()), ]
+    path('ws/<int:id>/', PersonalChatConsumer.as_asgi()),
+    path('ws/<int:group_id>/', GroupChatConsumer.as_asgi()), ]

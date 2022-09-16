@@ -1,0 +1,13 @@
+{% block content %}
+<main class="user-auth">
+
+    <div class="form-container">
+        <h2>login</h2>
+        <form method="post" action="{% url 'texting:creategroup' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button name="submit">create group</button>
+        </form>
+    </div>
+</main>
+{% endblock content %}
