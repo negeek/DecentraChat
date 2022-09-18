@@ -3,7 +3,6 @@ const message_username = JSON.parse(document.getElementById('json-message-userna
 const socket = new WebSocket(
     'ws://' + window.location.host + '/ws/group/' + group_id + '/'
 );
-console.log(socket)
 socket.onopen = function (e) {
     console.log("CONNECTION ESTABLISHED");
 }
@@ -16,7 +15,6 @@ socket.onerror = function (e) {
     console.log("ERROR");
 }
 socket.onmessage = function (e) {
-    console.log(e);
     const data = JSON.parse(e.data);
     if (data.username == message_username) {
         document.querySelector('#chat-body').innerHTML += `<tr>
