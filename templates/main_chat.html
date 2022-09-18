@@ -86,24 +86,22 @@
                                 <td>
                                     <p class="bg-success p-2 mt-2 mr-5 shadow-sm text-white float-right rounded">
                                         {{message.message}}
+                                        <small class="p-1 shadow-sm"
+                                            style="font-size:0.5em; ">{{message.timestamp|time:'H:i'}}</small>
                                     </p>
                                 </td>
-                                <td>
-                                    <p><small class="p-1 shadow-sm">{{message.timestamp|time:'H:i'}}</small>
-                                    </p>
-                                </td>
+
                             </tr>
                             {% else %}
                             <tr>
                                 <td>
                                     <p class="bg-primary p-2 mt-2 mr-5 shadow-sm text-white float-left rounded">
                                         {{message.message}}
+                                        <small class="p-1 shadow-sm"
+                                            style="font-size:0.5em; ">{{message.timestamp|time:'H:i'}}</small>
                                     </p>
                                 </td>
-                                <td>
-                                    <p><small class="p-1 shadow-sm">{{message.timestamp|time:'H:i'}}</small>
-                                    </p>
-                                </td>
+
                             </tr>
                             {% endif %}
                             {% endfor %}

@@ -1,7 +1,7 @@
 const group_id = JSON.parse(document.getElementById('json-groupname').textContent);
 const message_username = JSON.parse(document.getElementById('json-message-username').textContent);
 const socket = new WebSocket(
-    'ws://' + window.location.host + '/ws/' + group_id + '/'
+    'ws://' + window.location.host + '/ws/group/' + group_id + '/'
 );
 console.log(socket)
 socket.onopen = function (e) {
@@ -21,13 +21,13 @@ socket.onmessage = function (e) {
     if (data.username == message_username) {
         document.querySelector('#chat-body').innerHTML += `<tr>
                                                                 <td>
-                                                                <p class="bg-success p-2 mt-2 mr-5 shadow-sm text-white float-right rounded">${data.message}</p><small>${data.username}</small>
+                                                                <p class="bg-success p-2 mt-2 mr-5 shadow-sm text-white float-right rounded">${data.message}<small style="font-size:0.5em; ">&nbsp; ${data.username}</small></p>
                                                                 </td>
                                                             </tr>`
     } else {
         document.querySelector('#chat-body').innerHTML += `<tr>
                                                                 <td>
-                                                                <p class="bg-primary p-2 mt-2 mr-5 shadow-sm text-white float-left rounded">${data.message}</p><small>${data.username}</small>
+                                                                <p class="bg-primary p-2 mt-2 mr-5 shadow-sm text-white float-left rounded">${data.message}<small style="font-size:0.5em; ">&nbsp; ${data.username}</small></p>
                                                                 </td>
                                                             </tr>`
     }
