@@ -1,0 +1,24 @@
+USER AUTHENTICATION
+    SIGNUP
+    username   done
+    password   done
+
+    LOGIN
+    username      done 
+    password      done
+
+PROFILE PICS
+image
+
+GROUP CHAT    done
+group name
+participants
+
+MESSAGES
+delete message
+delete messages 
+delete all messages 
+
+
+VOICE CALL
+VIDEO CALL

@@ -88,6 +88,8 @@
                                         {{message.message}}
                                         <small class="p-1 shadow-sm"
                                             style="font-size:0.5em; ">{{message.timestamp|time:'H:i'}}</small>
+                                        <a href="{% url 'texting:delete' message.thread_name message.id %}"><small
+                                                style="font-size:0.5em;color: #000;">delete</small></a>
                                     </p>
                                 </td>
 
@@ -99,6 +101,8 @@
                                         {{message.message}}
                                         <small class="p-1 shadow-sm"
                                             style="font-size:0.5em; ">{{message.timestamp|time:'H:i'}}</small>
+                                        <a href="{% url 'texting:delete' message.thread_name message.id %}"><small
+                                                style="font-size:0.5em;color: #000;">delete</small></a>
                                     </p>
                                 </td>
 

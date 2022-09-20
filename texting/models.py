@@ -1,3 +1,4 @@
+from audioop import maxpp
 from django.db import models
 from django.contrib.auth import get_user_model
 # Create your models here.
@@ -32,3 +33,12 @@ class GroupChat(models.Model):
 
     def __str__(self) -> str:
         return self.thread_name
+
+
+class DeletedMessages(models.Model):
+    username = models.CharField(max_length=100)
+    thread_name = models.CharField(max_length=50)
+    message_id = models.IntegerField()
+
+    def __str__(self):
+        return f'{self.message_id}'

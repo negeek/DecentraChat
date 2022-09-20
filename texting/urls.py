@@ -6,4 +6,6 @@ urlpatterns = [
     path('chat/<str:username>/', views.chatPage, name='chat'),
     path('group/<int:group_id>/', views.groupPage, name='group'),
     path('creategroup/', views.createGroup, name='creategroup'),
+    path('delete/<str:thread_name>/<int:message_id>/',
+         views.deleteMessage, name='delete'),
 ]

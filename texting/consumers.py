@@ -57,7 +57,6 @@ class GroupChatConsumer(AsyncWebsocketConsumer):
         group_id = self.scope['url_route']['kwargs']['group_id']
         self.room_name = f'{group_id}'
         self.room_group_name = 'group_%s' % self.room_name
-        print(self.room_group_name)
         await self.channel_layer.group_add(self.room_group_name,
                                            self.channel_name)
         await self.accept()
@@ -67,23 +66,31 @@ class GroupChatConsumer(AsyncWebsocketConsumer):
         message = data['message']
         username = data['username']
 
-        await self.save_message(username, self.room_group_name, message)
+        message_id = await self.save_message(username, self.room_group_name, message)
+
         await self.channel_layer.group_send(
             self.room_group_name,
             {
                 'type': 'chat_message',
                 'message': message,
                 'username': username,
+                'thread_name': self.room_group_name,
+                'message_id': message_id
+
             }
         )
 
     async def chat_message(self, event):
         message = event['message']
         username = event['username']
+        thread_name = event['thread_name']
+        message_id = event['message_id']
 
         await self.send(text_data=json.dumps({
             'message': message,
             'username': username,
+            'thread_name': thread_name,
+            'id': message_id
         }))
 
     async def disconnect(self, close_code):
@@ -91,5 +98,7 @@ class GroupChatConsumer(AsyncWebsocketConsumer):
 
     @database_sync_to_async
     def save_message(self, username, thread_name, message):
-        GroupChat.objects.create(
+        id = GroupChat(
             sender=username, message=message, thread_name=thread_name)
+        id.save()
+        return id.id
