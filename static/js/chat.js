@@ -21,13 +21,15 @@ socket.onmessage = function (e) {
     if (data.username == message_username) {
         document.querySelector('#chat-body').innerHTML += `<tr>
                                                                 <td>
-                                                                <p class="bg-success p-2 mt-2 mr-5 shadow-sm text-white float-right rounded">${data.message}<small style="font-size:0.5em; ">&nbsp; ${d.toTimeString().slice(0, 5)}</small></p>
+                                                                <p class="bg-success p-2 mt-2 mr-5 shadow-sm text-white float-right rounded">${data.message}<small style="font-size:0.5em; ">&nbsp; ${d.toTimeString().slice(0, 5)}</small><a href="/delete/${data.thread_name}/${data.id}"><small
+                                                                style="font-size:0.5em;color: #000;">delete</small></a></p>
                                                                 </td>
                                                             </tr>`
     } else {
         document.querySelector('#chat-body').innerHTML += `<tr>
                                                                 <td>
-                                                                <p class="bg-primary p-2 mt-2 mr-5 shadow-sm text-white float-left rounded">${data.message}<small style="font-size:0.5em; ">&nbsp; ${d.toTimeString().slice(0, 5)}</small></p>
+                                                                <p class="bg-primary p-2 mt-2 mr-5 shadow-sm text-white float-left rounded">${data.message}<small style="font-size:0.5em; ">&nbsp; ${d.toTimeString().slice(0, 5)}</small><a href="/delete/${data.thread_name}/${data.id}"><small
+                                                                style="font-size:0.5em;color: #000;">delete</small></a></p>
                                                                 </td>
                                                             </tr>`
     }
