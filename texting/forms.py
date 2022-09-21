@@ -10,3 +10,12 @@ class GroupForm(forms.ModelForm):
         widgets = {
             'members': forms.CheckboxSelectMultiple,
         }
+
+
+class addRemoveToGroupForm(forms.ModelForm):
+    class Meta:
+        model = Group
+        fields = ['members']
+        widgets = {
+            'members': forms.CheckboxSelectMultiple,
+        }

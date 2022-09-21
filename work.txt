@@ -11,14 +11,14 @@ PROFILE PICS
 image
 
 GROUP CHAT    done
-group name
-participants
+group name    done
+participants  done
 
 MESSAGES
-delete message
-delete messages 
-delete all messages 
+delete message done
+delete messages  done
+delete all messages done
 
 
-VOICE CALL
+VOICE CALL  
 VIDEO CALL

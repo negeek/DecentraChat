@@ -42,6 +42,7 @@
             <div class="col-sm-8">
                 <img src="{% static 'assets/2.png' %}" alt="" class="profile-image rounded-circle">
                 <span class="ml-2">{{group.group_name}}</span>
+                <p><a href="{%url 'texting:addRemoveMember' group.id %}">add/remove member</a></p>
                 <span class="float-right mt-2">
                     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-search" fill="currentColor"
                         xmlns="http://www.w3.org/2000/svg">

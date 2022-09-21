@@ -4,7 +4,7 @@ from django.shortcuts import render
 from django.contrib.auth import get_user_model
 from .models import ChatModel, Group, GroupChat, DeletedMessages
 from django.contrib.auth.decorators import login_required
-from .forms import GroupForm
+from .forms import GroupForm, addRemoveToGroupForm
 # Create your views here.
 User = get_user_model()
 
@@ -81,6 +81,21 @@ def createGroup(request):
     return render(request, 'create_group.html', context={'form': form})
 
 
+@login_required
+def addRemoveToGroup(request, group_id):
+    group = Group.objects.get(id=group_id)
+    if request.method != 'POST':
+        form = addRemoveToGroupForm(instance=group)
+    else:
+        form = addRemoveToGroupForm(instance=group, data=request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('texting:group', args=[group.id]))
+
+    return render(request, 'add_remove_group_member.html', context={'form': form, 'group_id': group.id})
+
+
+@login_required
 def deleteMessage(request, thread_name, message_id):
     DeletedMessages.objects.create(
         message_id=message_id, thread_name=thread_name, username=request.user.username)
