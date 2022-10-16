@@ -33,6 +33,7 @@ socket.onmessage = function (e) {
                                                                 </td>
                                                             </tr>`
     }
+    document.querySelector(".message-table-scroll").scrollTo(0, document.querySelector(".message-table-scroll").scrollHeight);
 }
 
 document.querySelector('#chat-message-submit').onclick = function (e) {
@@ -43,6 +44,6 @@ document.querySelector('#chat-message-submit').onclick = function (e) {
         'message': message,
         'username': message_username
     }));
-
     message_input.value = '';
 }
+

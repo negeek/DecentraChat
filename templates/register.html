@@ -1,3 +1,7 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/auth.css' %}">
+
+{% block content %}
 <main class="user-auth">
     <div class="form-container">
         <h2>Register</h2>
@@ -5,8 +9,11 @@
             {% csrf_token %}
             {{ form.as_p }}
             <button name="submit">register</button>
-            <input type="hidden" name="next" value="{% url 'users:login' %}" />
+            <input type="hidden" name="next" value="{% url 'login' %}" />
         </form>
-        <span class="post-form">Already have an account? <a href="{% url 'users:login' %}">Login</a></span>
+        <div class="post-form">
+            <span class="post-form">Already have an account? <a href="{% url 'login' %}">Login</a></span>
+        </div>
     </div>
 </main>
+{% endblock content %}

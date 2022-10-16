@@ -1,0 +1,72 @@
+.user-auth {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Roboto', sans-serif;
+}
+
+.user-auth .form-container {
+    background-color: #fff;
+    box-shadow: 4px 3px 11px 1px rgba(135, 134, 134, 0.4);
+    -webkit-box-shadow: 4px 3px 11px 1px rgba(135, 134, 134, 0.4);
+    -moz-box-shadow: 4px 3px 11px 1px rgba(135, 134, 134, 0.4);
+    padding: 2rem;
+    border-radius: 10px;
+    width: 300px;
+    max-width: 100%;
+}
+
+.user-auth .form-container h2 {
+    font-size: 18px;
+    text-transform: uppercase;
+
+}
+
+.form-container form>p {
+    display: grid;
+
+}
+
+.form-container form>p label {
+    margin-bottom: 5px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.form-container form>p input {
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid #a1a1a1;
+    padding: 0.5rem .8rem;
+}
+
+.form-container form button {
+    width: 100%;
+    padding: 0.5rem;
+    background-color: #f25278;
+    border: 0;
+    outline: none;
+    border-radius: 5px;
+    text-transform: uppercase;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 500;
+    box-shadow: 0px 5px 7px 2px rgba(135, 134, 134, 0.52);
+    cursor: pointer;
+    transform: translateY(0);
+    transition: box-shadow 0.5s, translateY 0.5s;
+
+}
+
+.form-container form button:hover {
+    box-shadow: 0px 5px 7px 3px rgba(135, 134, 134, 0.52);
+    transform: translateY(-0.5px);
+}
+
+.form-container .post-form {
+    font-size: 12px;
+    text-align: right;
+    width: 100%;
+}

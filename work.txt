@@ -13,6 +13,8 @@ image
 GROUP CHAT    done
 group name    done
 participants  done
+adding ppl even after creation 
+
 
 MESSAGES
 delete message done

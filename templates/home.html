@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,15 +6,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <title>Chat App</title>
 </head>
 
 <body>
-    <p> Chat with Friends</p>
-    <p><a href="{% url 'users:login'%}">login/</a><a href="{% url 'users:register'%}">signup</a>
-    </p>
-    <p><a href="{% url 'users:logout'%}">logout</a>
-    </p>
+    <div class="container">
+        <h1> Chat with Friends</h1>
+        <div class="links">
+            <a href="{% url 'login'%}">login</a>
+            <p>or</p>
+            <a href="{% url 'users:register'%}">signup</a>
+        </div>
+    </div>
 </body>
 
 </html>
