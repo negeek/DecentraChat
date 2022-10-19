@@ -18,13 +18,15 @@
             <div class="col-sm-4 border-right border-muted d-flex align-items-center">
                 <a href="{% url 'texting:home'%}" class="mr-2"><i class="fa-solid fa-arrow-left"></i></a>
                 <div class="d-flex align-items-center">
-                    <img src="{% static 'assets/2.png' %}" alt="" class="profile-image rounded-circle mt-0">
+                    <img src="https://chat-appstorage.s3.amazonaws.com/{{request.user.profile.avatar}}" alt=""
+                        class="profile-image rounded-circle mt-0">
                     <span class="ml-2">{{request.user.username}}</span>
                 </div>
             </div>
             <div class="col-sm-8">
                 <div class="d-flex align-items-center mt-2">
-                    <img src="{% static 'assets/2.png' %}" alt="" class="mt-0 profile-image rounded-circle">
+                    <img src="https://chat-appstorage.s3.amazonaws.com/{{user.profile.avatar}}" alt=""
+                        class="mt-0 profile-image rounded-circle">
                     <span class="ml-2">{{user.username}}</span>
 
                 </div>
@@ -37,7 +39,8 @@
                     {% for user in users %}
                     <a href="{% url 'texting:chat' user.username %}"
                         class="chat-contact d-flexalign-items-center p-3 border-bottom border-muted d-block text-decoration-none">
-                        <img src="{% static 'assets/3.jpg' %}" alt="" class="mt-0 profile-image rounded-circle">
+                        <img src="https://chat-appstorage.s3.amazonaws.com/{{user.profile.avatar}}" alt=""
+                            class="mt-0 profile-image rounded-circle">
 
                         <span class="ml-2">{{user.username}}</span>
                     </a>

@@ -18,7 +18,7 @@ def index(request):
     for group in all_groups:
         if request.user in group.members.all():
             groups.append(group)
-    return render(request, 'index.html', context={'users': users, 'groups': groups})
+    return render(request, 'index.html', context={'users': users, 'groups': groups, 'user': user})
 
 
 @login_required

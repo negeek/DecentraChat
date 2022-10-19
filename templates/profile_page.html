@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <h4>Profile</h4>
+    <a href="{% url 'texting:home'%}">back</a>
+    <a href="{%url 'users:profile_update'%}">Edit profile</a>
+</head>
+
+<body>
+
+    <p>
+        <img src="https://chat-appstorage.s3.amazonaws.com/{{img_url}}" width="200" height="400">
+    <h4>Your Name: {{profile_name}} <span style="color: blue;">@{{username}}</span>
+    </h4>
+    </p>
+
+
+
+</body>
+
+</html>

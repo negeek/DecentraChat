@@ -1,0 +1,14 @@
+{% block content %}
+<main class="user-auth">
+
+    <div class="form-container">
+        <a href="{% url 'users:profile'%}">back</a>
+        <h2>update profile</h2>
+        <form method="post" action="{% url 'users:profile_update' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button name="submit">save</button>
+        </form>
+    </div>
+</main>
+{% endblock content %}

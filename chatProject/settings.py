@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
+from env import env
 import os
 from pathlib import Path
 
@@ -25,8 +26,14 @@ SECRET_KEY = 'django-insecure-6ch@$v_t&ppm-m%!#rf3*ity6$iwyh421r+#lpg-e(ez%+7!1(
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
 ALLOWED_HOSTS = []
+Env = env()
+AWS_ACCESS_KEY_ID = Env.aws_access_key_id()
+AWS_SECRET_ACCESS_KEY = Env.aws_secret_access_key()
+AWS_STORAGE_BUCKET_NAME = Env.aws_storage_bucket_name()
+
+AWS_QUERYSTRING_AUTH = Env.aws_querystring_auth()
+AWS_DEFAULT_ACL = 'public-read'
 
 
 # Application definition
@@ -39,6 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'texting',
+    'users',
     'channels',
 
 ]

@@ -40,7 +40,8 @@
 
             </div>
             <div class="col-sm-8">
-                <img src="{% static 'assets/2.png' %}" alt="" class="profile-image rounded-circle">
+                <img src="https://chat-appstorage.s3.amazonaws.com/{{group.avatar}}" alt=""
+                    class="profile-image rounded-circle">
                 <span class="ml-2">{{group.group_name}}</span>
                 <p><a href="{%url 'texting:addRemoveMember' group.id %}">add/remove member</a></p>
                 <span class="float-right mt-2">

@@ -1,10 +1,13 @@
+from django.contrib.auth import get_user_model
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from django.urls import reverse
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login, logout, authenticate
-from .forms import RegistrationForm
+
+from users.models import Profile
+from .forms import ProfileForm, RegistrationForm
 # Create your views here.
 
 
@@ -28,3 +31,31 @@ def register(request):
             return HttpResponseRedirect(reverse('users:login'))
             # return HttpResponseRedirect(reverse('logs:index'))
     return render(request, 'register.html', {'form': form})
+
+
+User = get_user_model()
+
+
+def profile(request):
+    user = User.objects.get(username=request.user.username)
+    img_url = user.profile.avatar
+    username = user.username
+    profile_name = user.profile.profile_name
+
+    return render(request, 'profile_page.html', {"img_url": img_url, "username": username, 'profile_name': profile_name})
+
+
+def profileUpdate(request):
+    if request.method != 'POST':
+        profile = Profile.objects.get(user=request.user)
+        form = ProfileForm(instance=profile)
+        for f in form:
+            print(f)
+
+    else:
+        form = ProfileForm(instance=profile, data=request.POST)
+
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('users:profile'))
+    return render(request, 'profile_update_page.html', context={'form': form})

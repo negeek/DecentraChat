@@ -15,6 +15,8 @@ class ChatModel(models.Model):
 
 
 class Group(models.Model):
+    avatar = models.FileField(
+        default='default.jpg', upload_to='profile_images/')
     group_name = models.CharField(max_length=100)
     members = models.ManyToManyField(
         get_user_model(), related_name='group_members')

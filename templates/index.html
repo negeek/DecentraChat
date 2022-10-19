@@ -21,7 +21,8 @@
                         <tbody>
                             {% for user in users %}
                             <tr>
-                                <td><img src="{% static 'assets/3.jpg' %}" alt="" class="profile-image rounded-circle">
+                                <td><img src="https://chat-appstorage.s3.amazonaws.com/{{user.profile.avatar}}" alt=""
+                                        class="profile-image rounded-circle">
                                 </td>
                                 <td><a href="{% url 'texting:chat' user.username %}">{{user.username}}</a></td>
                             </tr>
@@ -29,11 +30,15 @@
 
                             {% for group in groups %}
                             <tr>
-                                <td><img src="{% static 'assets/3.jpg' %}" alt="" class="profile-image rounded-circle">
+                                <td><img src="https://chat-appstorage.s3.amazonaws.com/{{group.avatar}}" alt=""
+                                        class="profile-image rounded-circle">
                                 </td>
                                 <td><a href="{% url 'texting:group' group.id %}">{{group.group_name}}</a></td>
                             </tr>
                             {% endfor %}
+                            <a href="{% url 'users:profile' %}"><img
+                                    src="https://chat-appstorage.s3.amazonaws.com/{{user.profile.avatar}}" alt=""
+                                    class="profile-image rounded-circle"></a>
                             <a href="{% url 'texting:creategroup'%}">create group</a>
                             <p><a href="{% url 'users:logout'%}">logout</a>
                             </p>
