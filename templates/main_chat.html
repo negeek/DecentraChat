@@ -18,8 +18,9 @@
             <div class="col-sm-4 border-right border-muted d-flex align-items-center">
                 <a href="{% url 'texting:home'%}" class="mr-2"><i class="fa-solid fa-arrow-left"></i></a>
                 <div class="d-flex align-items-center">
-                    <img src="https://chat-appstorage.s3.amazonaws.com/{{request.user.profile.avatar}}" alt=""
-                        class="profile-image rounded-circle mt-0">
+                    <a href="{% url 'users:profile' %}"><img
+                            src="https://chat-appstorage.s3.amazonaws.com/{{request.user.profile.avatar}}" alt=""
+                            class="profile-image rounded-circle mt-0"></a>
                     <span class="ml-2">{{request.user.username}}</span>
                 </div>
             </div>

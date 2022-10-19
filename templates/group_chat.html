@@ -16,7 +16,9 @@
     <div class="container front-container1">
         <div class="row chat-top">
             <div class="col-sm-4 border-right border-secondary">
-                <img src="{% static 'assets/2.png' %}" alt="" class="profile-image rounded-circle">
+                <a href="{% url 'users:profile' %}"><img
+                        src="https://chat-appstorage.s3.amazonaws.com/{{request.user.profile.avatar}}" alt=""
+                        class="profile-image rounded-circle"></a>
                 <span class="ml-2">{{request.user.username}}</span>
                 <p><a href="{% url 'texting:home'%}">Chats</a></p>
                 <span class="float-right mt-2">
