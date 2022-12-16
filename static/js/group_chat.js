@@ -18,22 +18,41 @@ socket.onmessage = function (e) {
     const data = JSON.parse(e.data);
     const d = new Date();
     if (data.username == message_username) {
-        document.querySelector('#chat-body').innerHTML += `<tr>
-                                                                <td>
-                                                                <p class="bg-success p-2 mt-2 mr-5 shadow-sm text-white float-right rounded">${data.message}<small style="font-size:0.5em; ">&nbsp; ${data.username}</small><small style="font-size:0.5em; ">&nbsp; ${d.toTimeString().slice(0, 5)}</small>
-                                                                <a href="/delete/${data.thread_name}/${data.id}"><small
-                                                style="font-size:0.5em;color: #000;">delete</small></a></p>
-    
-                                                                </td>
-                                                            </tr>`
+        document.querySelector('#chat-body').innerHTML += `
+                            <tr> 
+                                <td>
+                                    <p class="bg-success p-2 mt-2 mr-5 shadow-sm text-white float-right rounded">
+                                        ${data.message}
+                                        <small class="p-1 shadow-sm" style="font-size: 0.5em">
+                                            ${d.toTimeString().slice(0, 5)}
+                                        </small>
+                                        <a href="/delete/${data.thread_name}/${data.id}">
+                                            <small style="font-size:0.5em;color: #000;">delete</small>
+                                        </a>
+                                    </p>
+                                </td>
+                              </tr>`
     } else {
-        document.querySelector('#chat-body').innerHTML += `<tr>
-                                                                <td>
-                                                                <p class="bg-primary p-2 mt-2 mr-5 shadow-sm text-white float-left rounded">${data.message}<small style="font-size:0.5em; ">&nbsp; ${data.username}</small><small style="font-size:0.5em; ">&nbsp; ${d.toTimeString().slice(0, 5)}</small><a href="/delete/${data.thread_name}/${data.id}"><small
-                                                                style="font-size:0.5em;color: #000;">delete</small></a></p>
-                                                                </td>
-                                                            </tr>`
+        document.querySelector('#chat-body').innerHTML += `<tr >
+        <td>
+            <div class="float-left">
+                <p class="m-0">${data.username}</p>
+                <div class="bg-primary rounded p-2 shadow-sm        text-white text-wrap" style="max-width: 400px; word-break: break-all;">
+                    ${data.message}
+                    <small class="p-1 shadow-sm" style="font-size: 0.5em">
+                        ${d.toTimeString().slice(0, 5)}
+                    </small>
+                    <a href="/delete/${data.thread_name}/${data.id}">
+                        <small style="font-size:0.5em;color: #000;">
+                            delete
+                        </small>
+                    </a>
+                </div>
+            </div>
+        </td>
+      </tr>`
     }
+    document.querySelector(".message-table-scroll").scrollTo(0, document.querySelector(".message-table-scroll").scrollHeight);
 }
 
 document.querySelector('#chat-message-submit').onclick = function (e) {

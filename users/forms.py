@@ -21,5 +21,5 @@ class RegistrationForm(UserCreationForm):
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ['avatar', 'profile_name']
+        fields = ('avatar', 'profile_name')
         labels = {'profile_name': 'profile name'}

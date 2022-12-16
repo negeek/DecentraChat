@@ -5,7 +5,7 @@ from django.urls import reverse
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login, logout, authenticate
-
+from django.shortcuts import get_object_or_404
 from users.models import Profile
 from .forms import ProfileForm, RegistrationForm
 # Create your views here.
@@ -45,17 +45,14 @@ def profile(request):
     return render(request, 'profile_page.html', {"img_url": img_url, "username": username, 'profile_name': profile_name})
 
 
+
 def profileUpdate(request):
     if request.method != 'POST':
-        profile = Profile.objects.get(user=request.user)
-        form = ProfileForm(instance=profile)
-        for f in form:
-            print(f)
-
+        form = ProfileForm(instance=request.user.profile)
+       
     else:
-        form = ProfileForm(instance=profile, data=request.POST)
-
+        form = ProfileForm(request.POST,request.FILES, instance=request.user.profile)
         if form.is_valid():
-            form.save()
-            return HttpResponseRedirect(reverse('users:profile'))
+           form.save()
+           return HttpResponseRedirect(reverse('users:profile'))
     return render(request, 'profile_update_page.html', context={'form': form})

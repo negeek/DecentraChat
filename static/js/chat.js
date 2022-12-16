@@ -9,10 +9,14 @@ socket.onopen = function (e) {
 }
 
 socket.onclose = function (e) {
+    console.log(e);
+
     console.log("CLOSED");
 }
 
 socket.onerror = function (e) {
+    console.log(e);
+
     console.log("ERROR");
 }
 socket.onmessage = function (e) {
@@ -33,7 +37,7 @@ socket.onmessage = function (e) {
                                                                 </td>
                                                             </tr>`
     }
-    document.querySelector(".message-table-scroll").scrollTo(0, document.querySelector(".message-table-scroll").scrollHeight);
+    ddocumentocument.querySelector(".message-table-scroll").scrollTo(0, document.querySelector(".message-table-scroll").scrollHeight);
 }
 
 document.querySelector('#chat-message-submit').onclick = function (e) {

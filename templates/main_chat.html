@@ -1,109 +1,123 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load tz %}
-{% block title %}Chat View{% endblock %}
-
-{% block css %}
-<link rel="stylesheet" href="{% static 'css/index.css' %}">
+{% block title %}
+Chat View
 {% endblock %}
-
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/index.css' %}" />
+{% endblock %}
 {% block content %}
 <div class="back-container">
-    <div class="container-fluid front-container">
-        <div class="back-top"></div>
-        <div class="back-main"></div>
-    </div>
-    <div class="container front-container1">
-        <div class="row chat-top">
-            <div class="col-sm-4 border-right border-muted d-flex align-items-center">
-                <a href="{% url 'texting:home'%}" class="mr-2"><i class="fa-solid fa-arrow-left"></i></a>
-                <div class="d-flex align-items-center">
-                    <a href="{% url 'users:profile' %}"><img
-                            src="https://chat-appstorage.s3.amazonaws.com/{{request.user.profile.avatar}}" alt=""
-                            class="profile-image rounded-circle mt-0"></a>
-                    <span class="ml-2">{{request.user.username}}</span>
-                </div>
-            </div>
-            <div class="col-sm-8">
-                <div class="d-flex align-items-center mt-2">
-                    <img src="https://chat-appstorage.s3.amazonaws.com/{{user.profile.avatar}}" alt=""
-                        class="mt-0 profile-image rounded-circle">
-                    <span class="ml-2">{{user.username}}</span>
-
-                </div>
-
-            </div>
+  <div class="container-fluid front-container">
+    <div class="back-top"></div>
+    <div class="back-main"></div>
+  </div>
+  <div class="container front-container1">
+    <div class="row chat-top">
+      <div class="col-sm-4 border-right border-muted d-flex align-items-center">
+        <a href="{% url 'texting:home'%}" class="mr-2"
+          ><i class="fa-solid fa-arrow-left"></i
+        ></a>
+        <div class="d-flex align-items-center">
+          <h3 class="m-0">DMs</h3>
         </div>
-        <div class="row">
-            <div class="col-sm-4 contacts">
-                <div class="contact-table-scroll">
-                    {% for user in users %}
-                    <a href="{% url 'texting:chat' user.username %}"
-                        class="chat-contact d-flexalign-items-center p-3 border-bottom border-muted d-block text-decoration-none">
-                        <img src="https://chat-appstorage.s3.amazonaws.com/{{user.profile.avatar}}" alt=""
-                            class="mt-0 profile-image rounded-circle">
-
-                        <span class="ml-2">{{user.username}}</span>
-                    </a>
-                    {% endfor %}
-                    <!-- end -->
-                </div>
-
-            </div>
-            <div class="col-sm-8 message-area">
-                <div class="message-table-scroll">
-                    <table class="table">
-                        <tbody id='chat-body'>
-                            {% for message in messages %}
-                            {% if message.sender == request.user.username %}
-                            <tr>
-                                <td>
-                                    <p class="bg-success p-2 mt-2 mr-5 shadow-sm text-white float-right rounded">
-                                        {{message.message}}
-                                        <small class="p-1 shadow-sm"
-                                            style="font-size:0.5em; ">{{message.timestamp|time:'H:i'}}</small>
-                                        <a href="{% url 'texting:delete' message.thread_name message.id %}"><small
-                                                style="font-size:0.5em;color: #000;">delete</small></a>
-                                    </p>
-                                </td>
-
-                            </tr>
-                            {% else %}
-                            <tr>
-                                <td>
-                                    <p class="bg-primary p-2 mt-2 mr-5 shadow-sm text-white float-left rounded">
-                                        {{message.message}}
-                                        <small class="p-1 shadow-sm"
-                                            style="font-size:0.5em; ">{{message.timestamp|time:'H:i'}}</small>
-                                        <a href="{% url 'texting:delete' message.thread_name message.id %}"><small
-                                                style="font-size:0.5em;color: #000;">delete</small></a>
-                                    </p>
-                                </td>
-
-                            </tr>
-                            {% endif %}
-                            {% endfor %}
-                        </tbody>
-                    </table>
-                </div>
-                <div class="d-flex message-box p-3 align-items-center">
-                    <input type="text" class="form-control border-0 outline-0" id="message_input"
-                        placeholder="Write message...">
-                    <button class="send-btn" id="chat-message-submit">
-                        <i class="fa-regular fa-paper-plane"></i>
-                    </button>
-                </div>
-            </div>
+      </div>
+      <div class="col-sm-8">
+        <div class="d-flex align-items-center mt-2">
+          <img
+            src="https://chat-appstorage.s3.amazonaws.com/{{user.profile.avatar}}"
+            alt=""
+            class="mt-0 profile-image rounded-circle"
+          />
+          <span class="ml-2">{{user.username}}</span>
         </div>
+      </div>
     </div>
-
+    <div class="row">
+      <div class="col-sm-4 contacts">
+        <div class="contact-table-scroll">
+            {% for user in users %}
+            <a href="{% url 'texting:chat' user.username %}"
+                class="chat-contact d-flexalign-items-center p-3 border-bottom border-muted d-block text-decoration-none">
+                <img src="https://chat-appstorage.s3.amazonaws.com/{{user.profile.avatar}}" alt=""
+                    class="mt-0 profile-image rounded-circle" />
+        
+                <span class="ml-2">{{user.username}}</span>
+            </a>
+            {% endfor %}
+            <!-- end -->
+        </div>
+      </div>
+      <div class="col-sm-8 message-area">
+        <div class="message-table-scroll">
+          <table class="table">
+            <tbody id="chat-body">
+              {% for message in messages %} 
+              {% if message.sender == request.user.username %}
+              <tr>
+                <td>
+                  <p
+                    class="bg-success p-2 mt-2 mr-5 shadow-sm text-white float-right rounded"
+                  >
+                    {{message.message}}
+                    <small class="p-1 shadow-sm" style="font-size: 0.5em"
+                      >{{message.timestamp|time:'H:i'}}</small
+                    >
+                    <a
+                      href="{% url 'texting:delete' message.thread_name message.id %}"
+                      ><small style="font-size: 0.5em; color: #000"
+                        >delete</small
+                      ></a
+                    >
+                  </p>
+                </td>
+              </tr>
+              {% else %}
+              <tr>
+                <td>
+                  <p
+                    class="bg-primary p-2 mt-2 mr-5 shadow-sm text-white float-left rounded"
+                  >
+                    {{message.message}}
+                    <small class="p-1 shadow-sm" style="font-size: 0.5em"
+                      >{{message.timestamp|time:'H:i'}}</small
+                    >
+                    <a
+                      href="{% url 'texting:delete' message.thread_name message.id %}"
+                      ><small style="font-size: 0.5em; color: #000"
+                        >delete</small
+                      ></a
+                    >
+                  </p>
+                </td>
+              </tr>
+              {% endif %} 
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+        <div class="d-flex message-box p-3 align-items-center">
+          <input
+            type="text"
+            class="form-control border-0 outline-0"
+            id="message_input"
+            placeholder="Write message..."
+          />
+          <button class="send-btn" id="chat-message-submit">
+            <i class="fa-regular fa-paper-plane"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 {{user.id|json_script:"json-username"}}
-{{request.user.username|json_script:"json-message-username"}}
+{{request.user.username|json_script:"json-message-username"}} 
 {% endblock %}
 {% block javascript %}
 <script src="{% static 'js/chat.js' %}"></script>
 <script src="{% static 'js/utils.js' %}"></script>
 
-{% endblock %}
+{% endblock %} 
 Footer

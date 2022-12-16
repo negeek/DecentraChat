@@ -16,35 +16,45 @@
     <div class="container front-container1">
         <div class="row">
             <div class="col-sm-4 contacts">
+                <div class="contacts-column-top">
+                <h3>{{user.username}}</h3>
+                <div class="actions">
+                    <a href="{% url 'users:profile' %}" title="Profile"><i class="fa-solid fa-user-pen"></i></a>
+                    <a href="{% url 'texting:creategroup'%}" title="Create Group"><i class="fa-solid fa-users"></i></a>
+                    <a href="{% url 'users:logout'%}" title="Logout"><i class="fa-solid fa-right-from-bracket"></i></a>
+                </div>
+                </div>
                 <div class="contact-table-scroll">
-                    <table class="table table-hover">
-                        <tbody>
-                            {% for user in users %}
-                            <tr>
-                                <td><img src="https://chat-appstorage.s3.amazonaws.com/{{user.profile.avatar}}" alt=""
+                    <div class="contacts-column">
+                        <section class="users-contact">
+                        {% for user in users %}
+                            <a class="user" href="{% url 'texting:chat' user.username %}">
+                                <div class="user-img"><img src="https://chat-appstorage.s3.amazonaws.com/{{user.profile.avatar}}" alt=""
                                         class="profile-image rounded-circle">
-                                </td>
-                                <td><a href="{% url 'texting:chat' user.username %}">{{user.username}}</a></td>
-                            </tr>
+                                </div>
+                                <p class="username">{{user.username}}</p>
+                            </a>
                             {% endfor %}
-
+                        </section>
+                        <section class="users-contact">
                             {% for group in groups %}
-                            <tr>
-                                <td><img src="https://chat-appstorage.s3.amazonaws.com/{{group.avatar}}" alt=""
+                            <a class="user" href="{% url 'texting:group' group.id %}">
+                                <div class="user-img"><img src="https://chat-appstorage.s3.amazonaws.com/{{group.avatar}}" alt=""
                                         class="profile-image rounded-circle">
-                                </td>
-                                <td><a href="{% url 'texting:group' group.id %}">{{group.group_name}}</a></td>
-                            </tr>
+                                </div>
+                                <p class="username">{{group.group_name}}</p>
+                            </a>
                             {% endfor %}
-                            <a href="{% url 'users:profile' %}"><img
-                                    src="https://chat-appstorage.s3.amazonaws.com/{{user.profile.avatar}}" alt=""
-                                    class="profile-image rounded-circle"></a>
-                            <a href="{% url 'texting:creategroup'%}">create group</a>
-                            <p><a href="{% url 'users:logout'%}">logout</a>
-                            </p>
-                            <!-- end -->
-                        </tbody>
-                    </table>
+                        </section>
+                    <!-- end -->
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-8 empty-chat">
+                <div class="empty-chat-content">
+                    <img class="empty-img" src="{% static 'assets/empty-chat-bg.svg'%}" />
+                    <h2>No Chats selected</h2>
+                    <p>Select a chat to view the messages in the chat.</p>
                 </div>
             </div>
         </div>
