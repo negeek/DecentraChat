@@ -4,18 +4,13 @@ volumes:
   
 
 envs:
-  - DB_PASS: ${DB_PASS}
+  - DB_PASS: random_pg
     type: password
-  - DB_NAME: ${DB_NAME}
-  - DB_HOST: ${DB_HOST}
-  - SECRET_KEY: ${SECRET_KEY}
-  - aws_access_key_id: ${aws_access_key_id}
-  - aws_secret_access_key: ${aws_secret_access_key}
-  - aws_storage_bucket_name: ${aws_storage_bucket_name}
-  - aws_querystring_auth: ${aws_querystring_auth}
-  - aws_default_acl: ${aws_default_acl}
+  - DB_NAME: chatDB
+  - DB_HOST: postgresql
+  - SECRET_KEY: random_chat-secret
+ 
   
-
 services:
   - redis:
       tag: 5
@@ -26,6 +21,6 @@ services:
         - name: postgres_vol
           mount: /var/lib/postgresql/data/
       envs:
-        - POSTGRES_DB: $POSTGRES_DB
-        - POSTGRES_USER: $POSTGRES_USER
-        - POSTGRES_PASSWORD: $POSTGRES_PASSWORD
+        - POSTGRES_DB: chatDB
+        - POSTGRES_USER: negeek
+        - POSTGRES_PASSWORD: random_pg
