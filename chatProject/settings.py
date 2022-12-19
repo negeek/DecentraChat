@@ -22,8 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-6ch@$v_t&ppm-m%!#rf3*ity6$iwyh421r+#lpg-e(ez%+7!1('
-
+SECRET_KEY = os.environ['SECRET_KEY']
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 ALLOWED_HOSTS = []
@@ -48,13 +47,13 @@ INSTALLED_APPS = [
 
 ]
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-Env = env()
-AWS_ACCESS_KEY_ID = Env.aws_access_key_id()
-AWS_SECRET_ACCESS_KEY = Env.aws_secret_access_key()
-AWS_STORAGE_BUCKET_NAME = Env.aws_storage_bucket_name()
 
-AWS_QUERYSTRING_AUTH = Env.aws_querystring_auth()
-AWS_DEFAULT_ACL = 'public-read'
+AWS_ACCESS_KEY_ID =os.environ['aws_access_key_id']
+AWS_SECRET_ACCESS_KEY = os.environ['aws_secret_access_key']
+AWS_STORAGE_BUCKET_NAME = os.environ['aws_storage_bucket_name']
+
+AWS_QUERYSTRING_AUTH = os.environ['aws_querystring_auth']
+AWS_DEFAULT_ACL = os.environ['aws_default_acl']
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -91,11 +90,22 @@ WSGI_APPLICATION = 'chatProject.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+'default': {
+'ENGINE': 'django.db.backends.postgresql',
+'NAME': os.environ['DB_NAME'],
+'USER': 'negeek',
+'PASSWORD': os.environ['DB_PASS'],
+'HOST': os.environ['DB_HOST'],
+'PORT': 5432
+}
 }
 
 
@@ -152,7 +162,7 @@ CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "channels_redis.core.RedisChannelLayer",
         "CONFIG": {
-            "hosts": [("127.0.0.1", 6379)],
+            "hosts": [("redis", 6379)],
         },
     },
 }

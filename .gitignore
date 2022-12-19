@@ -9,7 +9,7 @@ media
 #env.py
 # Backup files # 
 *.bak 
-.env.py
+.env
 file.py
 
 # If you are using PyCharm # 

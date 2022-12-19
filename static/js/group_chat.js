@@ -1,7 +1,7 @@
 const group_id = JSON.parse(document.getElementById('json-groupname').textContent);
 const message_username = JSON.parse(document.getElementById('json-message-username').textContent);
 const socket = new WebSocket(
-    'ws://' + window.location.host + '/ws/group/' + group_id + '/'
+    'wss://' + window.location.host + '/ws/group/' + group_id + '/'
 );
 socket.onopen = function (e) {
     console.log("CONNECTION ESTABLISHED");
