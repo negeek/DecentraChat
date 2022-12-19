@@ -147,7 +147,7 @@ CLIENT_DEFAULT_TIME_ZONE = 'Africa/Lagos'
 
 STATIC_URL = '/static/'
 #STATICFILES_DIRS = os.path.join(BASE_DIR, 'static'),
-STATIC_ROOT= '/staticfiles/'
+STATIC_ROOT= os.path.join(BASE_DIR, 'static')
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 ASGI_APPLICATION = 'chatProject.asgi.application'

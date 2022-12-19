@@ -1,19 +1,19 @@
 volumes:
   - name:  static
-    mount: /staticfiles/
+    mount: /static/
   
 
 envs:
-  - DB_PASS: $DB_PASS
+  - DB_PASS: ${DB_PASS}
     type: password
-  - DB_NAME: $DB_NAME
-  - DB_HOST: $DB_HOST
-  - SECRET_KEY: $SECRET_KEY
-  - aws_access_key_id: $aws_access_key_id
-  - aws_secret_access_key: $aws_secret_access_key
-  - aws_storage_bucket_name: $aws_storage_bucket_name
-  - aws_querystring_auth: $aws_querystring_auth
-  - aws_default_acl: $aws_default_acl
+  - DB_NAME: ${DB_NAME}
+  - DB_HOST: ${DB_HOST}
+  - SECRET_KEY: ${SECRET_KEY}
+  - aws_access_key_id: ${aws_access_key_id}
+  - aws_secret_access_key: ${aws_secret_access_key}
+  - aws_storage_bucket_name: ${aws_storage_bucket_name}
+  - aws_querystring_auth: ${aws_querystring_auth}
+  - aws_default_acl: ${aws_default_acl}
   
 
 services:
