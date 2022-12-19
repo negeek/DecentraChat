@@ -48,14 +48,14 @@ INSTALLED_APPS = [
 ]
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
-from env import env
+# from env import env
 
-AWS_ACCESS_KEY_ID =env.aws_access_key_id()
-AWS_SECRET_ACCESS_KEY = env.aws_secret_access_key()
-AWS_STORAGE_BUCKET_NAME = env.aws_storage_bucket_name()
+# AWS_ACCESS_KEY_ID =env.aws_access_key_id()
+# AWS_SECRET_ACCESS_KEY = env.aws_secret_access_key()
+# AWS_STORAGE_BUCKET_NAME = env.aws_storage_bucket_name()
 
-AWS_QUERYSTRING_AUTH = env.aws_querystring_auth()
-AWS_DEFAULT_ACL = env.aws_default_acl()
+# AWS_QUERYSTRING_AUTH = env.aws_querystring_auth()
+# AWS_DEFAULT_ACL = env.aws_default_acl()
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
