@@ -1,0 +1,161 @@
+.main-content {
+    background-color: #f0f0f0;
+    border-right: 1px solid #e0e0e0;
+}
+.h-full {
+    height: 100vh;
+}
+.main-content {
+    position: relative;
+}
+.profile-header {
+    background-color: #009688;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 1rem;
+    padding-top: 3rem;
+    color: #fff;
+    min-height: 100px;
+}
+.profile-header a {
+    padding: 1rem;
+    color: #fff;
+    font-size: 1.4rem;
+}
+.avatar {
+    width: 200px;
+    height: 200px;
+    margin: 2rem auto;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+.main-content .username {
+    background-color: #fff;
+    display: grid;
+    margin: 3rem -15px;
+    padding: 20px;
+}
+.main-content .title {
+    color: #009688;
+    font-size: 14px;
+    font-weight: 400;
+    margin-bottom: 2rem;
+}
+.main-content .username .name {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+} 
+.main-content .username .name span {
+    font-weight: 500;
+    font-size: 16px;
+}
+.main-content .edit-btn-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.main-content  button#edit-btn {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    color: blue;
+    text-decoration: underline;
+    margin: auto;
+    font-size: 1.1rem;
+}
+.user-auth {
+    padding: 2rem;
+}
+.user-auth.second-page{
+    left: 100%;
+    position: absolute;
+    right: 0;
+    top: 100px;
+    width: 100%;
+    height: 100%;
+    transition: left 0.3s;
+    background-color: #fff;
+}
+.user-auth.second-page.show {
+    left: 0;
+}
+.user-auth .edit-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.user-auth .edit-header h4 {
+    text-transform: capitalize;
+    margin: 0;
+}
+.user-auth .edit-header button{
+    border: none;
+    outline: none;
+    background-color: transparent;
+    padding: .5rem;
+    font-size: 2rem;
+    color: #999;
+}
+.user-auth form {
+    padding: 2rem 0;
+}
+.user-auth form .profile .field {
+    display: grid;
+    margin: 1rem 0;
+}
+.user-auth form .field label {
+    margin: 0.1rem;
+}
+.user-auth form input {
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid #a1a1a1;
+    padding: 0.5rem .8rem;
+}
+.user-auth form button {
+    width: 100%;
+    background-color: #009688;
+    padding: 0.7rem;
+    border: none;
+    outline: none;
+    color: #fff;
+    border-radius: 4px;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+}
+.create_group .user-auth form > div{
+    display: grid;
+    margin: 0 0 2rem     
+}
+.create_group .user-auth form > div label, .create_group .user-auth form > div legend {
+    font-size: 1rem;;
+}
+
+.create_group .user-auth form  #id_members {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.create_group .user-auth form #id_members > div {
+    margin: .5rem 1.5rem .5rem 0; 
+}
+
+.create_group .user-auth form  #id_members > div label {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+.create_group .user-auth form  #id_members > div label input {
+    margin-right: .4rem;
+}

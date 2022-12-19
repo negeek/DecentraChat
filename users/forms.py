@@ -19,6 +19,8 @@ class RegistrationForm(UserCreationForm):
 
 
 class ProfileForm(forms.ModelForm):
+    avatar=forms.FileField(widget=forms.FileInput(attrs={'class': 'form-control-file'}))
+    profile_name = forms.CharField()
     class Meta:
         model = Profile
         fields = ('avatar', 'profile_name')

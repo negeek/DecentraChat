@@ -1,14 +1,42 @@
-{% block content %}
-<main class="user-auth">
+{% extends 'base.html' %}
+{% load static %}
 
-    <div class="form-container">
-        <a href="{% url 'texting:home'%}">Chats</a>
-        <h2>create group</h2>
-        <form method="post" action="{% url 'texting:creategroup' %}">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button name="submit">create group</button>
-        </form>
+{% block title %}WhatsApp{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+<link rel="stylesheet" href="{% static 'css/profile.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="back-container create_group">
+    <div class="row m-0 h-full">
+        <div class="col-sm-5 main-content">
+          <div class="profile-display">
+            <div class="row profile-header">
+                <a href="{% url 'texting:home'%}"><i class="fa-solid fa-arrow-left"></i></a>
+                <h4 class="m-0">Create Group</h4>
+            </div>
+            <main class="user-auth">
+                <div class="form-container">
+                    <form method="post" action="{% url 'texting:creategroup' %}">
+                        {% csrf_token %}
+                        {{ form.as_div }}
+                        <button name="submit">create group</button>
+                    </form>
+                </div>
+            </main>
+          </div>
+          
+        </div>
+        <div class="col-sm-7 empty-chat">
+            <div class="empty-chat-content">
+                <img class="empty-img" src="{% static 'assets/profile.svg'%}" />
+                <h2>Group</h2>
+                <p>Create a group with your friends.</p>
+            </div>
+        </div>
     </div>
-</main>
+</div>
 {% endblock content %}
+Footer

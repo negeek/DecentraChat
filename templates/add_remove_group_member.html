@@ -1,13 +1,43 @@
-{% block content %}
-<main class="user-auth">
+{% extends 'base.html' %}
+{% load static %}
 
-    <div class="form-container">
-        <h2>login</h2>
-        <form method="post" action="{% url 'texting:addRemoveMember' group_id %}">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button name="submit">Done</button>
-        </form>
+{% block title %}WhatsApp{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+<link rel="stylesheet" href="{% static 'css/profile.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="back-container create_group">
+    <div class="row m-0 h-full">
+        <div class="col-sm-5 main-content">
+          <div class="profile-display">
+            <div class="row profile-header">
+                <a href="{% url 'texting:group' group_id %}"><i class="fa-solid fa-arrow-left"></i></a>
+                <h4 class="m-0">Create Group</h4>
+            </div>
+            <main class="user-auth">
+                <div class="form-container">
+                    <form method="post" action="{% url 'texting:addRemoveMember' group_id %}">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button name="submit">Done</button>
+                    </form>
+                </div>
+            </main>
+          </div>
+          
+        </div>
+        <div class="col-sm-7 empty-chat">
+            <div class="empty-chat-content">
+                <img class="empty-img" src="{% static 'assets/profile.svg'%}" />
+                <h2>Members</h2>
+                <p>Add or remove members.</p>
+            </div>
+        </div>
     </div>
-</main>
+</div>
 {% endblock content %}
+Footer

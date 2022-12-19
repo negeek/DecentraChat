@@ -1,26 +1,73 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %}
+{% load static %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <h4>Profile</h4>
-    <a href="{% url 'texting:home'%}">back</a>
-    <a href="{%url 'users:profile_update'%}">Edit profile</a>
-</head>
+{% block title %}WhatsApp{% endblock %}
 
-<body>
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+<link rel="stylesheet" href="{% static 'css/profile.css' %}">
+{% endblock %}
 
-    <p>
-        <img src="https://chat-appstorage.s3.amazonaws.com/{{img_url}}" width="200" height="400">
-    <h4>Your Name: {{profile_name}} <span style="color: blue;">@{{username}}</span>
-    </h4>
-    </p>
+{% block content %}
+<div class="back-container">
+    <div class="row m-0 h-full">
+        <div class="col-sm-5 main-content">
+          <div class="profile-display">
+            <div class="row profile-header">
+                <a href="{% url 'texting:home'%}"><i class="fa-solid fa-arrow-left"></i></a>
+                <h4 class="m-0">Profile</h4>
+            </div>
+            
 
+            <div class="profile-body">
+                <div class="avatar">
+                    <img src="https://chat-appstorage.s3.amazonaws.com/{{img_url}}" alt="" >
+                </div>
+                <div class="username">
+                    <span class="title">Username</span>
+                    <div class="name">
+                        <span>{{username}}</span>
+                    </div>
+                </div>
+                <div class="edit-btn-container">
+                    <button id="edit-btn" title="edit profile">Edit Profile</button>
+                </div>
+                <main id="edit-screen" class="user-auth second-page">
+                    <div class="form-container">
+                        <div class="edit-header">
+                            <h4>update profile</h2>
+                                <button id="edit-close-btn" title="Close"><i class="fa-solid fa-xmark"></i></button>
+                            </div>
+                        <form method="post" enctype="multipart/form-data" action="{% url 'users:profile' %}">
+                            {% csrf_token %}
+                            <div class="profile">
+                            <div class="field">
+                                <label>Avatar</label>
+                                {{form.avatar}}
+                            </div>
+                            <div class="field">
+                                <label>Profile name</label>
+                                {{form.profile_name}}
+                            </div>
+                            </div>
+                            <button name="submit">save</button>
+                        </form>
+                    </div>
+                </main>
+            </div>
+          </div>
+          
+        </div>
+        <div class="col-sm-7 empty-chat">
+            <div class="empty-chat-content">
+                <img class="empty-img" src="{% static 'assets/profile.svg'%}" />
+                <h2>Profile page</h2>
+                <p>View and update your profile information.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="{% static 'js/profile.js' %}"></script>
 
-
-</body>
-
-</html>
+{% endblock %}
+Footer

@@ -37,22 +37,31 @@ User = get_user_model()
 
 
 def profile(request):
+    form = ProfileForm(instance=request.user.profile)
     user = User.objects.get(username=request.user.username)
     img_url = user.profile.avatar
     username = user.username
     profile_name = user.profile.profile_name
 
-    return render(request, 'profile_page.html', {"img_url": img_url, "username": username, 'profile_name': profile_name})
-
-
-
-def profileUpdate(request):
-    if request.method != 'POST':
-        form = ProfileForm(instance=request.user.profile)
-       
-    else:
+    if request.method == 'POST':
+        print("sope Done")
         form = ProfileForm(request.POST,request.FILES, instance=request.user.profile)
+        print(request.FILES)
         if form.is_valid():
-           form.save()
-           return HttpResponseRedirect(reverse('users:profile'))
-    return render(request, 'profile_update_page.html', context={'form': form})
+            form.save()
+        return HttpResponseRedirect(reverse('users:profile'))
+
+    return render(request, 'profile_page.html', {"img_url": img_url, "username": username, 'profile_name': profile_name, 'form':form})
+
+
+
+# def profileUpdate(request):
+#     if request.method != 'POST':
+#         form = ProfileForm(instance=request.user.profile)
+       
+#     else:
+#         form = ProfileForm(request.POST,request.FILES, instance=request.user.profile)
+#         if form.is_valid():
+#            form.save()
+#            return HttpResponseRedirect(reverse('users:profile'))
+#     return render(request, 'profile_page.html', context={'form': form})
