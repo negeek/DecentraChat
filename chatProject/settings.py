@@ -87,6 +87,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'chatProject.wsgi.application'
+ASGI_APPLICATION = 'chatProject.asgi.application'
 
 
 # Database
@@ -106,7 +107,7 @@ DATABASES = {
 'USER': 'negeek',
 'PASSWORD': os.environ['DB_PASS'],
 'HOST': os.environ['DB_HOST'],
-'PORT': 5530
+'PORT': 5432
 }
 }
 
@@ -152,7 +153,7 @@ STATIC_URL = '/static/'
 STATIC_ROOT= os.path.join(BASE_DIR, 'static')
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
-ASGI_APPLICATION = 'chatProject.asgi.application'
+
 
 # CHANNEL_LAYERS = {
 #     "default": {
