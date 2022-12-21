@@ -1,6 +1,6 @@
 volumes:
   - name:  static
-    mount: /static/
+    mount: /app_static_content/staticfiles/
   
 
 envs:
