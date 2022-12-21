@@ -37,7 +37,7 @@ socket.onmessage = function (e) {
                                                                 </td>
                                                             </tr>`
     }
-    ddocumentocument.querySelector(".message-table-scroll").scrollTo(0, document.querySelector(".message-table-scroll").scrollHeight);
+    document.querySelector(".message-table-scroll").scrollTo(0, document.querySelector(".message-table-scroll").scrollHeight);
 }
 
 document.querySelector('#chat-message-submit').onclick = function (e) {
