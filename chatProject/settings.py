@@ -25,7 +25,7 @@ SECRET_KEY = os.environ['SECRET_KEY']
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 ALLOWED_HOSTS = ['*']
-CSRF_TRUSTED_ORIGINS = ['https://b-chatapp9n3j.eu-ccofhtfzmvsd.dopraxapp.com']
+CSRF_TRUSTED_ORIGINS = ['https://b-chatappfzyt.eu-ccofhtfzmvsd.dopraxapp.com']
 
 
 
