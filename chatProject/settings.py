@@ -22,8 +22,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ['SECRET_KEY']
+# SECRET_KEY = 'django-insecure-z=cio(7a_xn0a43hx2+yoz#&*o6vqki3^rrr+kc-yn3h4b+jk4'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
+# DEBUG = True
 ALLOWED_HOSTS = ['*']
 CSRF_TRUSTED_ORIGINS = ['https://b-chatappfzyt.eu-ccofhtfzmvsd.dopraxapp.com']
 
@@ -49,7 +51,7 @@ INSTALLED_APPS = [
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 # from env import env
-
+# env=env()
 # AWS_ACCESS_KEY_ID =env.aws_access_key_id()
 # AWS_SECRET_ACCESS_KEY = env.aws_secret_access_key()
 # AWS_STORAGE_BUCKET_NAME = env.aws_storage_bucket_name()
@@ -178,3 +180,8 @@ CHANNEL_LAYERS = {
     },
 }
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+
+
+

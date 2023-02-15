@@ -7,10 +7,15 @@ from django.contrib.auth.decorators import login_required
 from .forms import GroupForm, addRemoveToGroupForm
 # Create your views here.
 User = get_user_model()
+from chatProject import mobile_blocker
 
 
 @login_required
 def index(request):
+    is_mobile=mobile_blocker.is_mobile(request)
+    if is_mobile:
+        return render(request, 'mobile_blocker.html')
+
     users = User.objects.exclude(username=request.user.username)
     user = User.objects.get(username=request.user.username)
     all_groups = Group.objects.all()
