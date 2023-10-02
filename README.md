@@ -1,5 +1,5 @@
-# Chat App
-An app that allows you interact with any user on the platform.
+# LibreTalk
+A messaging application for connecting freely with people.
 
 Check it out [here](https://bchatappeqwz.kfirjgyswf.dopraxrocks.com/)
 
